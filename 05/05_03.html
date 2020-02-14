@@ -9,6 +9,8 @@
         height: 300px;
         background-color: red;
         transition: all 400ms ease;
+        transform: translate(0, 0);
+        border-radius: 0;
       }
     </style>
   </head>
@@ -18,14 +20,42 @@
       <button onclick="makeCircle()">Сделать круглым</button>
       <button onclick="moveRight()">Подвинуть направо</button>
       <button onclick="makeCrazy()">Сделать мигающим</button>
-      <input type="text" placeholder="Напишите название цвета на английском или в виде HEX-кода" size="70">
+
+      <input id="labelInput" type="text"
+      placeholder="Напишите любое слово" size="70">
       <button onclick="addText()">Добавить надпись</button>
+
+
+      <input id="bgColorInput" type="text" placeholder="Напишите название цвета на английском или в виде HEX-кода" size="70">
+      <button onclick="changeBgColor()">Добавить цвет</button>
 
       <script>
         let box = document.querySelector(".box")
         function paintItBlack() {
           box.style.backgroungColor = "black"
         }
+
+        function makeCircle() {
+          box.style.borderRadius = "200px"
+        }
+
+        function moveRight() {
+          box.style.transform = "translate(20px)"
+        }
+
+        function addText() {
+        let labelInput = document.getElementById("labelInput").value
+        box.innerText = labelInput.value
+        labelInput.value = ""
+        }
+
+        function changeBgColor() {
+          let bgColorInput = document.querySelector('#bgColorInput')
+          box.style.backgroundColor = bgColorInput.value
+          bgColorInput.value = ""
+        }
+
+
         function reset() {
           window.location.reload()
         }
